@@ -66,7 +66,7 @@ def genkey(passphrase):
     """
     Generate an RSA private/public keypair
     : param passphrase: passphrase for RSA keypair
-    :  return: private and public keys
+    : return: private and public keys
     """
     code = passphrase
     key = RSA.generate(2048)
@@ -101,5 +101,5 @@ if __name__ == '__main__':
     writekeystofile(priv, pub, privkey_fname, pubkey_fname)
 
     # encrypt and decrypt a file
-    encrypt('test.txt', 'encrypted_data.bin', 'my_rsa_public.pem')
-    print(decrypt(password, 'encrypted_data.bin', 'my_private_rsa_key.bin'))
+    encrypt('test.txt', 'encrypted_data.bin', pubkey_fname)
+    print(decrypt(password, 'encrypted_data.bin', privkey_fname))
